@@ -63,7 +63,6 @@ public class School implements Serializable {
         this.setId(id);
         return this;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -76,7 +75,6 @@ public class School implements Serializable {
         this.setName(name);
         return this;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -89,7 +87,6 @@ public class School implements Serializable {
         this.setEmail(email);
         return this;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
