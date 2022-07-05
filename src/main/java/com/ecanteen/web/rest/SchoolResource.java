@@ -25,7 +25,6 @@ public class SchoolResource {
 
     private static final String ENTITY_NAME = "school";
 
-    @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final SchoolService schoolService;
