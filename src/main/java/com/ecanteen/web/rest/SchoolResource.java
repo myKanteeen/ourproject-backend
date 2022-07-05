@@ -48,7 +48,7 @@ public class SchoolResource {
     public ResponseEntity<SchoolDTO> createSchool(@RequestBody SchoolDTO schoolDTO) throws URISyntaxException {
         log.debug("REST request to save School : {}", schoolDTO);
         if (schoolDTO.getId() != null) {
-            throw new BadRequestAlertException("A new school cannot already have an ID", ENTITY_NAME, "idexists");
+            throw new BadRequestAlertException("A new school cannot already have an ID", ENTITY_NAME, "id-exists");
         }
         SchoolDTO result = schoolService.save(schoolDTO);
         return ResponseEntity
