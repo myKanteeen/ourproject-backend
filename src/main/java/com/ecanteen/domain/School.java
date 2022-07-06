@@ -1,15 +1,34 @@
 package com.ecanteen.domain;
 
 import com.ecanteen.domain.enumeration.ROLE;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.Hibernate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * A School.
  */
 @Entity
 @Table(name = "school")
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class School implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,146 +71,12 @@ public class School implements Serializable {
     private ROLE role;
 
 
-
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public School id(Long id) {
-        this.setId(id);
-        return this;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public School name(String name) {
-        this.setName(name);
-        return this;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public School email(String email) {
-        this.setEmail(email);
-        return this;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return this.phoneNumber;
-    }
-
-    public School phoneNumber(String phoneNumber) {
-        this.setPhoneNumber(phoneNumber);
-        return this;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return this.address;
-    }
-
-    public School address(String address) {
-        this.setAddress(address);
-        return this;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getKkUseId() {
-        return this.kkUseId;
-    }
-
-    public School kkUseId(String kkUseId) {
-        this.setKkUseId(kkUseId);
-        return this;
-    }
-
-    public void setKkUseId(String kkUseId) {
-        this.kkUseId = kkUseId;
-    }
-
-    public ZonedDateTime getCreatedDate() {
-        return this.createdDate;
-    }
-
-    public School createdDate(ZonedDateTime createdDate) {
-        this.setCreatedDate(createdDate);
-        return this;
-    }
-
-    public void setCreatedDate(ZonedDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public ZonedDateTime getModifiedDate() {
-        return this.modifiedDate;
-    }
-
-    public School modifiedDate(ZonedDateTime modifiedDate) {
-        this.setModifiedDate(modifiedDate);
-        return this;
-    }
-
-    public void setModifiedDate(ZonedDateTime modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
-    public String getCreatedBy() {
-        return this.createdBy;
-    }
-
-    public School createdBy(String createdBy) {
-        this.setCreatedBy(createdBy);
-        return this;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public String getModifiedBy() {
-        return this.modifiedBy;
-    }
-
-    public School modifiedBy(String modifiedBy) {
-        this.setModifiedBy(modifiedBy);
-        return this;
-    }
-
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof School)) {
-            return false;
-        }
-        return id != null && id.equals(((School) o).id);
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        School school = (School) o;
+        return id != null && Objects.equals(id, school.id);
     }
 
     @Override

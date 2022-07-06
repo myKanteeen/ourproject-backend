@@ -1,4 +1,4 @@
 /**
  * Spring MVC REST controllers.
  */
-package com.ecanteen.web.rest;
+package com.ecanteen.web;

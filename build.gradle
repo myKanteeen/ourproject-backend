@@ -66,6 +66,12 @@ dependencies {
     testImplementation "org.testcontainers:junit-jupiter"
     testImplementation "org.testcontainers:postgresql"
     testImplementation "org.testcontainers:localstack"
+    testImplementation "org.testcontainers:postgresql"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.springframework.security:spring-security-test"
+    testImplementation "org.springframework.boot:spring-boot-test"
+    testImplementation group: 'io.quarkus', name: 'quarkus-junit5', version: '2.10.1.Final'
+    testImplementation "com.h2database:h2"
 }
 
 dependencyManagement {

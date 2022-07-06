@@ -38,4 +38,47 @@ public class SchoolServiceImpl implements SchoolService {
         school = schoolRepository.save(school);
         return schoolMapper.toDto(school);
     }
+
+    @Override
+    public SchoolDTO update(SchoolDTO schoolDTO) {
+        log.debug("Request to save School : {}", schoolDTO);
+        School school = schoolMapper.toEntity(schoolDTO);
+        school = schoolRepository.save(school);
+        return schoolMapper.toDto(school);
+    }
+
+    @Override
+    public Optional<SchoolDTO> partialUpdate(SchoolDTO schoolDTO) {
+        log.debug("Request to partially update School : {}", schoolDTO);
+
+        return schoolRepository
+            .findById(schoolDTO.getId())
+            .map(existingSchool -> {
+                schoolMapper.partialUpdate(existingSchool, schoolDTO);
+
+                return existingSchool;
+            })
+            .map(schoolRepository::save)
+            .map(schoolMapper::toDto);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<SchoolDTO> findAll(Pageable pageable) {
+        log.debug("Request to get all Schools");
+        return schoolRepository.findAll(pageable).map(schoolMapper::toDto);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<SchoolDTO> findOne(Long id) {
+        log.debug("Request to get School : {}", id);
+        return schoolRepository.findById(id).map(schoolMapper::toDto);
+    }
+
+    @Override
+    public void delete(Long id) {
+        log.debug("Request to delete School : {}", id);
+        schoolRepository.deleteById(id);
+    }
 }

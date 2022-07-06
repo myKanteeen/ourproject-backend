@@ -3,4 +3,4 @@
  *
  * More information on https://github.com/zalando/problem-spring-web
  */
-package com.ecanteen.web.rest.errors;
+package com.ecanteen.web.errors;

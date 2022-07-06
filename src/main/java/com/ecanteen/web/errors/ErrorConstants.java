@@ -1,4 +1,4 @@
-package com.ecanteen.web.rest.errors;
+package com.ecanteen.web.errors;
 
 import java.net.URI;
 
