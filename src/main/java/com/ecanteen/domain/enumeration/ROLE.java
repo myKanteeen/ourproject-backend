@@ -1,5 +1,4 @@
 package com.ecanteen.domain.enumeration;
-
 /**
  * The ROLE enumeration.
  */
