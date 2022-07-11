@@ -1,15 +1,8 @@
 package com.ecanteen.service.dto;
 
-
-import com.ecanteen.domain.Order;
-import com.ecanteen.domain.School;
 import com.ecanteen.domain.enumeration.ROLE;
-import org.joda.time.DateTimeZone;
-
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -47,7 +40,6 @@ public class StudentDTO implements Serializable {
 
     private ROLE role;
 
-    private List <Order> orders;
 
 
     public Long getId() {
@@ -170,24 +162,25 @@ public class StudentDTO implements Serializable {
         this.role = role;
     }
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        StudentDTO that = (StudentDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(fullName, that.fullName) && Objects.equals(email, that.email) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(address, that.address) && Objects.equals(imageUrl, that.imageUrl) && Objects.equals(isEnabled, that.isEnabled) && Objects.equals(phoneVerified, that.phoneVerified) && Objects.equals(emailVerified, that.emailVerified) && Objects.equals(KkUesId, that.KkUesId) && Objects.equals(createdDate, that.createdDate) && Objects.equals(modifiedDate, that.modifiedDate) && Objects.equals(CreatedBy, that.CreatedBy) && Objects.equals(modifiedBy, that.modifiedBy) && role == that.role && Objects.equals(orders, that.orders);
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof SchoolDTO)) {
+            return false;
+        }
+
+        StudentDTO studentDTO = (StudentDTO) o;
+        if (this.id == null) {
+            return false;
+        }
+        return Objects.equals(this.id, studentDTO.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fullName, email, phoneNumber, address, imageUrl, isEnabled, phoneVerified, emailVerified, KkUesId, createdDate, modifiedDate, CreatedBy, modifiedBy, role, orders);
+        return Objects.hash(this.id);
     }
+
 }

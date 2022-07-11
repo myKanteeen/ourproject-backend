@@ -97,10 +97,6 @@ public class Student implements Serializable {
     @Column(name = "role")
     private ROLE role;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
-      private List<Order> orders = new ArrayList<Order>();
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -121,7 +117,5 @@ public class Student implements Serializable {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-
-
 
 }
