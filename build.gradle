@@ -40,6 +40,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     compileOnly 'org.projectlombok:lombok'
@@ -72,8 +73,11 @@ dependencies {
     testImplementation "org.springframework.boot:spring-boot-test"
     testImplementation group: 'io.quarkus', name: 'quarkus-junit5', version: '2.10.1.Final'
     testImplementation "com.h2database:h2"
-}
 
+}
+configurations.all {
+    exclude module: 'slf4j-log4j12'
+}
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${spring_cloud_version}"
