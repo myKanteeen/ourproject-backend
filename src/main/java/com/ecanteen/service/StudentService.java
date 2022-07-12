@@ -1,12 +1,9 @@
 package com.ecanteen.service;
 
-import com.ecanteen.domain.Student;
-import com.ecanteen.service.dto.SchoolDTO;
+
 import com.ecanteen.service.dto.StudentDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.Optional;
 
 
@@ -14,7 +11,7 @@ import java.util.Optional;
  * Service Interface for managing {@link com.ecanteen.domain.Student}.
  */
 
-public interface StudentService  {
+public interface StudentService {
     /**
      * Save a Student.
      *
@@ -39,13 +36,6 @@ public interface StudentService  {
      */
     Optional<StudentDTO> partialUpdate(StudentDTO studentDTO);
 
-    /**
-     * Get all the Students.
-     *
-     * @param pageable the pagination information.
-     * @return the list of entities.
-     */
-    Page<StudentDTO> findAll(Pageable pageable);
 
     /**
      * Get the "id" Student.
@@ -54,6 +44,15 @@ public interface StudentService  {
      * @return the entity.
      */
     Optional<StudentDTO> findOne(Long id);
+
+    /**
+     * Get all the Students.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    Page<StudentDTO> findAll(Pageable pageable);
+
 
     /**
      * Delete the "id" Student.

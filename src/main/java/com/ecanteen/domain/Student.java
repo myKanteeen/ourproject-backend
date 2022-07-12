@@ -1,7 +1,7 @@
 package com.ecanteen.domain;
 
 import com.ecanteen.domain.enumeration.ROLE;
-import io.swagger.v3.oas.annotations.info.Contact;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -10,19 +10,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Objects;
 
 /***
@@ -97,9 +94,7 @@ public class Student implements Serializable {
     @Column(name = "role")
     private ROLE role;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id", nullable = false)
-      private List<Order> orders = new ArrayList<Order>();
+
 
     @Override
     public boolean equals(Object o) {

@@ -7,6 +7,7 @@ import com.ecanteen.service.dto.StudentDTO;
 import com.ecanteen.web.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -33,16 +34,13 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/api")
 public class StudentResource {
-
-    private final Logger log = LoggerFactory.getLogger(StudentResource.class);
-
-
     private static final String ENTITY_NAME = "student";
+    private final Logger log = LoggerFactory.getLogger(StudentResource.class);
 
     private final StudentService studentService;
 
     private final StudentRepository studentRepository;
-
+    @Autowired
     public StudentResource(StudentService studentService, StudentRepository studentRepository) {
         this.studentService = studentService;
         this.studentRepository = studentRepository;
@@ -50,9 +48,8 @@ public class StudentResource {
 
     /**
      * {@code POST  /students} : Create a new student.
-     *
      * @param studentDTO the studentsDTO to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new studentDTO, or with status {@code 400 (Bad Request)} if the school has already an ID.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new studentDTO, or with status {@code 400 (Bad Request)} if the student has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/students")
@@ -66,9 +63,10 @@ public class StudentResource {
             .created(new URI("/api/students/" + result.getId()))
             .body(result);
     }
+
+
     /**
      * {@code GET  /students} : get all the students.
-     *
      * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of students in body.
      */
@@ -78,16 +76,9 @@ public class StudentResource {
         return ResponseEntity.ok().body(page.getContent());
     }
 
-    /**
-     * {@code DELETE  /students/:id} : delete the "id" student.
-     *
-     * @param id the id of the studentDTO to delete.
-     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-     */
 
     /**
      * {@code PUT  /students/:id} : Updates an existing student.
-     *
      * @param id the id of the studentDTO to save.
      * @param studentDTO the  studentDTO to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated studentDTO,
@@ -117,6 +108,12 @@ public class StudentResource {
             .ok()
             .body(result);
     }
+
+    /**
+     * {@code DELETE  /students/:id} : delete the "id" student.
+     * @param id the id of the studentDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
     @DeleteMapping("/students/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         log.debug("REST request to delete student : {}", id);

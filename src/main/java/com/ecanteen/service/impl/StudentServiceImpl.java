@@ -8,6 +8,7 @@ import com.ecanteen.service.dto.StudentDTO;
 import com.ecanteen.service.mapper.StudentMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,13 @@ public class StudentServiceImpl implements StudentService {
 
     private final Logger log = LoggerFactory.getLogger(StudentServiceImpl.class);
 
-    private final StudentRepository studentRepository;
-    private final StudentMapper studentMapper;
 
+    private final StudentMapper studentMapper;
+    private final StudentRepository studentRepository;
+
+
+
+    @Autowired
     public StudentServiceImpl(StudentRepository studentRepository, StudentMapper studentMapper) {
         this.studentRepository = studentRepository;
         this.studentMapper = studentMapper;

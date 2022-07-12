@@ -101,6 +101,7 @@ class SchoolResourceIT {
     public static School createEntity(EntityManager em) {
         return new School()
             .name(UPDATED_NAME)
+            .name(UPDATED_NAME)
             .email(UPDATED_EMAIL)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .address(UPDATED_ADDRESS)

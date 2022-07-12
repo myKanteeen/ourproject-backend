@@ -6,7 +6,9 @@ import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
+
 import com.amazonaws.services.s3.AmazonS3;
+
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.sqs.AmazonSQSAsync;
 import com.amazonaws.services.sqs.AmazonSQSAsyncClientBuilder;
@@ -19,7 +21,8 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 @Profile({PROFILE_NOT_TEST})
 public class AwsConfig {
-    @Autowired private ApplicationProperties properties;
+     @Autowired
+    private ApplicationProperties properties;
 
     static {
         System.setProperty("com.amazonaws.sdk.disableCbor", "true");
@@ -55,6 +58,6 @@ public class AwsConfig {
 
     private AwsClientBuilder.EndpointConfiguration getEndpointConfiguration() {
         return new AwsClientBuilder.EndpointConfiguration(
-                properties.getEndpointUri(), properties.getRegion());
+                properties.getEndpointUri(), properties.getRegion( ));
     }
 }
