@@ -73,7 +73,6 @@ dependencies {
     testImplementation "org.springframework.boot:spring-boot-test"
     testImplementation group: 'io.quarkus', name: 'quarkus-junit5', version: '2.10.1.Final'
     testImplementation "com.h2database:h2"
-
 }
 configurations.all {
     exclude module: 'slf4j-log4j12'

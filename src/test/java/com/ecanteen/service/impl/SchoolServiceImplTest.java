@@ -5,6 +5,10 @@ import com.ecanteen.domain.enumeration.ROLE;
 import com.ecanteen.repository.SchoolRepository;
 import com.ecanteen.service.dto.SchoolDTO;
 import com.ecanteen.service.mapper.SchoolMapper;
+<<<<<<< HEAD
+=======
+import com.ecanteen.web.rest.TestUtil;
+>>>>>>> da5ef8ca032c50bb68d9df4b958be7a1c50141d2
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,6 +38,11 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
+<<<<<<< HEAD
+=======
+import java.util.Objects;
+import java.util.Optional;
+>>>>>>> da5ef8ca032c50bb68d9df4b958be7a1c50141d2
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -86,8 +95,11 @@ public class SchoolServiceImplTest {
     @MockBean
     private SchoolServiceImpl schoolServiceImpl;
     private SchoolRepository schoolRepository;
+<<<<<<< HEAD
     @Autowired
     @MockBean
+=======
+>>>>>>> da5ef8ca032c50bb68d9df4b958be7a1c50141d2
     private EntityManager em;
     @Autowired
     private MockMvc mockMvc;
@@ -143,12 +155,28 @@ public class SchoolServiceImplTest {
     void setUp() {
         school = createEntity(em);
         schoolRepository = Mockito.mock(SchoolRepository.class);
+<<<<<<< HEAD
+=======
+        schoolServiceImpl = new SchoolServiceImpl(schoolRepository, schoolMapper);
+    }
+
+    //   Unit test using Mockito : Do not want to talk to db
+    @Test
+    void shouldReturnSchoolDto() throws Exception {
+        mockMvc.perform(post("/api/schools").contentType(MediaType.ALL).content(TestUtil.convertObjectToJsonBytes(school)))
+            .andExpect(status().isCreated());
+
+>>>>>>> da5ef8ca032c50bb68d9df4b958be7a1c50141d2
     }
 
     @Test
     void createSchool() throws Exception {
         int databaseSizeBeforeCreate = schoolRepository.findAll().size();
+<<<<<<< HEAD
         mockMvc.perform(post("/api/schools")).andExpect(status().isOk());
+=======
+        mockMvc.perform(post("/api/schools", school)).andExpect(status().isOk());
+>>>>>>> da5ef8ca032c50bb68d9df4b958be7a1c50141d2
 //        SchoolDTO schoolDTO = org.mapstruct.factory.Mappers.getMapper(SchoolMapper.class).toDto(school);
 //        System.out.println(databaseSizeBeforeCreate);
 //        when(schoolRepository.save(any(School.class))).thenReturn(school);
