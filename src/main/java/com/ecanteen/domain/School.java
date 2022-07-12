@@ -70,7 +70,6 @@ public class School implements Serializable {
     @Column(name = "role")
     private ROLE role;
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
